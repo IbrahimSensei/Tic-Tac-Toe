@@ -17,7 +17,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.Font;
 import javax.swing.JPanel;
 
-public class XOgame {
+public class TicTacToe{
 
 	public ArrayList<String> cols= new ArrayList<String>();
 	public boolean isWinner=false,Draw = false;
