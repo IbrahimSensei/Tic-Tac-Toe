@@ -16,16 +16,18 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 import java.awt.Font;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
-public class TicTacToe{
+public class TicTacToe {
 
 	public ArrayList<String> cols= new ArrayList<String>();
 	public boolean isWinner=false,Draw = false;
 	public JFrame frmTicTacToe;
 	public JButton btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset;
-	public JLabel lbl;
+	public JLabel lbl,X_O;
 	public boolean run = true;
 	public String[] TicTacToe = {"X","O"}; 
+	public int Xscore = 0, Oscore = 0;
 	public int random = randomRangeRandom(0,1);
 	/**
 	 * Launch the application.
@@ -82,13 +84,15 @@ public class TicTacToe{
 		
 		
 		lbl = new JLabel(TicTacToe[random]);
+		lbl.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		lbl.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lbl.setBounds(303, 95, 76, 27);
+		lbl.setBounds(271, 95, 89, 27);
 		frmTicTacToe.getContentPane().add(lbl); 
 		
 		JLabel lbl2 = new JLabel("");
-		lbl2.setBounds(261, 142, 118, 14);
+		lbl2.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl2.setBounds(254, 142, 118, 14);
 		frmTicTacToe.getContentPane().add(lbl2); 
 		
 		findWinner(lbl2);
@@ -111,7 +115,7 @@ public class TicTacToe{
 				
 		}
 				findWinner(lbl2);
-				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 				System.out.println(cols);
 			}
 		});
@@ -135,7 +139,7 @@ public class TicTacToe{
 					
 			}
 				findWinner(lbl2);
-				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 				System.out.println(cols);
 			}
 		});
@@ -159,7 +163,7 @@ public class TicTacToe{
 					
 			}
 				findWinner(lbl2);
-				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 				System.out.println(cols);
 			}
 		});
@@ -183,7 +187,7 @@ public class TicTacToe{
 					
 			}
 				findWinner(lbl2);
-				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 				System.out.println(cols);
 			}
 		});
@@ -207,7 +211,7 @@ public class TicTacToe{
 					
 			}
 				findWinner(lbl2);
-				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 				System.out.println(cols);
 			}
 		});
@@ -231,7 +235,7 @@ public class TicTacToe{
 					
 			}
 				findWinner(lbl2);
-				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 				System.out.println(cols);
 			}
 		});
@@ -255,7 +259,7 @@ public class TicTacToe{
 					
 			}
 				findWinner(lbl2);
-				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 				System.out.println(cols);
 			}
 		});
@@ -279,7 +283,7 @@ public class TicTacToe{
 					
 			}
 				findWinner(lbl2);
-				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 				System.out.println(cols);
 			}
 		});
@@ -303,7 +307,7 @@ public class TicTacToe{
 					
 			}
 				findWinner(lbl2);
-				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+				Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 				System.out.println(cols);
 			}
 		});
@@ -343,12 +347,32 @@ public class TicTacToe{
 		//while(run) {findWinner(lbl2);}
 		//collems.toArray();
 		System.out.println(cols);
-		Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset);
+		Reset(btn0,btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,reset,lbl2);
 		
-		JLabel lblNewLabel = new JLabel("Beta 1");
+		JLabel lblNewLabel = new JLabel("Beta 2");
 		lblNewLabel.setFont(new Font("Monospaced", Font.PLAIN, 9));
 		lblNewLabel.setBounds(135, 236, 37, 14);
 		frmTicTacToe.getContentPane().add(lblNewLabel);
+		
+		JLabel SCORE = new JLabel("SCORE");
+		SCORE.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
+		SCORE.setBounds(296, 11, 46, 14);
+		frmTicTacToe.getContentPane().add(SCORE);
+		
+		JLabel XOSCORE = new JLabel("X  -  O");
+		XOSCORE.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
+		XOSCORE.setHorizontalAlignment(SwingConstants.CENTER);
+		XOSCORE.setBounds(296, 32, 46, 14);
+		frmTicTacToe.getContentPane().add(XOSCORE);
+		
+		X_O = new JLabel("");
+		X_O.setText(Xscore + " - " + Oscore);
+		X_O.setHorizontalAlignment(SwingConstants.CENTER);
+		X_O.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
+		X_O.setBounds(296, 53, 46, 14);
+		frmTicTacToe.getContentPane().add(X_O);
+		
+	
 	}
 	public String[][] divBoard(ArrayList<String> arr){
 		String[][] div = {
@@ -367,7 +391,7 @@ public class TicTacToe{
 		return div;
 	}
 	public void Reset(JButton btn0,JButton btn1,JButton btn2,JButton btn3,JButton btn4,JButton btn5
-			,JButton btn6,JButton btn7,JButton btn8,JButton reset) {
+			,JButton btn6,JButton btn7,JButton btn8,JButton reset,JLabel lbl2) {
 		if(isWinner||Draw) {
 			btn0.setEnabled(false);
 			btn1.setEnabled(false);
@@ -387,6 +411,8 @@ public class TicTacToe{
 			btn6.setText("-");
 			btn7.setText("-");
 			btn8.setText("-");
+			
+			X_O.setText(Xscore + " - " + Oscore);
 			cols.set(0,"-");//0
 			cols.set(1,"-");//1
 			cols.set(2,"-");//2
@@ -413,6 +439,7 @@ public class TicTacToe{
 				btn7.setEnabled(true);
 				btn8.setEnabled(true);
 				reset.setEnabled(false);
+				lbl2.setText("");
 				isWinner = false;
 				Draw = false;
 			}
@@ -426,24 +453,32 @@ public class TicTacToe{
 				
 				if(div[i][1] == "X") {
 				String Winner = "The winner is " + div[i][1];
-				lbl2.setText(Winner);isWinner = true;
+				lbl2.setText(Winner);Xscore++;isWinner = true;
 				}
 				else if(div[i][1] == "O") {
 					
 					String Winner = "The winner is " + div[i][1];
-					lbl2.setText(Winner);isWinner = true;
+					lbl2.setText(Winner);Oscore++;isWinner = true;
 					}
 				
-				else if(div[i][0] != div[i][1] && div[i][1] != div[i][2] && div[i][2] != div[i][0] ) {
-					lbl2.setText("DRAW");
-					Draw = true;
-				}
+				
 			}
-			
+			if(isWinner == false && isFilled() == true) {
+				lbl2.setText("DRAW");
+				Draw = true;
+			}
 			
 		}
 		
 		
+	}
+	public boolean isFilled() {
+		if(cols.get(0) != "-" && cols.get(1) != "-" && cols.get(2) != "-" &&
+				cols.get(3) != "-" && cols.get(4) != "-" && cols.get(5) != "-" &&
+						cols.get(6) != "-" && cols.get(7) != "-" && cols.get(8) != "-") {
+			return true;
+		}
+		return false;
 	}
 	public int randomRangeRandom(int start, int end) {
 	    Random random = new Random();
